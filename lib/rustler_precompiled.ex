@@ -49,7 +49,7 @@ defmodule RustlerPrecompiled do
 
     * `:nif_versions` - A list of OTP NIF versions for which precompiled assets are
       available. A NIF version is usually compatible with two OTP minor versions, and an older
-      NIF is usually compatible with newer OTPs. The available versions are the following: 
+      NIF is usually compatible with newer OTPs. The available versions are the following:
 
       * `2.14` - for OTP 21 and above.
       * `2.15` - for OTP 22 and above.
@@ -102,7 +102,7 @@ defmodule RustlerPrecompiled do
 
     * `TARGET_ABI` - The target ABI (e.g., `gnueabihf`, `musl`). This is set by Nerves as well.
 
-    * `TARGET_VENDOR` - The target vendor (e.g., `unknown`, `apple`, `pc`). This is **not** set by Nerves. 
+    * `TARGET_VENDOR` - The target vendor (e.g., `unknown`, `apple`, `pc`). This is **not** set by Nerves.
       If any of the `TARGET_` env vars is set, but `TARGET_VENDOR` is empty, then we change the
       target vendor to `unknown` that is the default value for Linux systems.
 
@@ -506,6 +506,7 @@ defmodule RustlerPrecompiled do
     if original_sys_arch != updated_system_arch and
          original_sys_arch.vendor == updated_system_arch.vendor do
       Map.put(updated_system_arch, :vendor, "unknown")
+      updated_system_arch
     else
       updated_system_arch
     end
